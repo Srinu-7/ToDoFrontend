@@ -1,1 +1,1 @@
-export const GITHUB_TOKEN = "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";
+export const GITHUB_TOKEN = "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"; // // GitHub token for authentication

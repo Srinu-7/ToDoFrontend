@@ -1,1 +1,0 @@
-export const GITHUB_TOKEN = "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"; 

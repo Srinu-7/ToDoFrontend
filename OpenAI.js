@@ -17,7 +17,7 @@ async function getAccessToken() {
     }
     
     // Make request to backend to get the OpenAI token
-    const response = await fetch(`${API_BASE_URL}/token/`, {
+    const response = await fetch(`${API_BASE_URL}/token/github`, {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json', 
@@ -25,11 +25,10 @@ async function getAccessToken() {
         'Authorization': `Bearer ${jwt}`
       }
     });
-    
     // If response is not ok (e.g. 401 Unauthorized)
     if (!response.ok) {
       if (response.status === 401 || response.status === 403) {
-        console.log("Authentication failed, redirecting to login page");
+        console.log("Authentication failed, redirecting to login page ");
         // Clear invalid JWT
         localStorage.removeItem('jwt');
         window.location.href = "login.html";
@@ -40,6 +39,7 @@ async function getAccessToken() {
     
     // Parse and return the token
     const data = await response.json();
+    console.log("Token retrieved successfully:", data);
     return data.token;
     
   } catch (error) {
